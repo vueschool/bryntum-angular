@@ -5,4 +5,18 @@
   [endDate]="schedulerConfig.endDate!"
   [crudManager]="schedulerConfig.crudManager!"
   [columns]="schedulerConfig.columns!"
+  [eventMenuFeature]="{
+    items: {
+      editEvent: accessGranted,
+      moveForward: {
+        icon: 'b-fa b-fa-caret-right',
+        text: 'Move 1 hour ahead',
+        cls: 'b-separator',
+        weight: 400,
+        onItem: moveForward1Hour
+      },
+    },
+  }"
+  (onEventMenuBeforeShow)="handleEventMenuBeforeShow($event)"
 ></bryntum-scheduler>
+<button (click)="accessGranted = !accessGranted">{{ accessGranted }}</button>

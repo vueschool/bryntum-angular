@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { BryntumSchedulerComponent } from '@bryntum/scheduler-angular';
-import { SchedulerConfig } from '@bryntum/scheduler';
+import { SchedulerConfig, EventModel } from '@bryntum/scheduler';
 
 const schedulerConfig: Partial<SchedulerConfig> = {
   viewPreset: 'hourAndDay',
@@ -24,5 +24,18 @@ const schedulerConfig: Partial<SchedulerConfig> = {
 })
 export class AppComponent {
   schedulerConfig = schedulerConfig;
+  accessGranted = true;
+
+  moveForward1Hour(event: { eventRecord?: EventModel }): void {
+    const { eventRecord } = event;
+    if (eventRecord) eventRecord.shift('h', 1);
+  }
+  handleEventMenuBeforeShow({ items }: any): void {
+    if (!this.accessGranted) {
+      items.editEvent = false;
+      items.deleteEvent = false;
+    }
+  }
+
   @ViewChild('scheduler') schedulerComponent!: BryntumSchedulerComponent;
 }
