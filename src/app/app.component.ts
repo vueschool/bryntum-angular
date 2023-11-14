@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
 import { BryntumSchedulerComponent } from '@bryntum/scheduler-angular';
 import { SchedulerConfig } from '@bryntum/scheduler';
 
@@ -20,6 +20,7 @@ const schedulerConfig: Partial<SchedulerConfig> = {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   schedulerConfig = schedulerConfig;
