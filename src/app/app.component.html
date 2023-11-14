@@ -5,4 +5,14 @@
   [endDate]="schedulerConfig.endDate!"
   [crudManager]="schedulerConfig.crudManager!"
   [columns]="schedulerConfig.columns!"
+  (onBeforeEventEditShow)="handleBeforeEventEditShow($event)"
+  [eventEditFeature]="{
+    items: {
+      noteField: {
+      type: 'textarea',
+      label: 'Notes',
+      name: 'note',
+    },
+    },
+  }"
 ></bryntum-scheduler>

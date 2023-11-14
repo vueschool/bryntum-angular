@@ -24,5 +24,9 @@ const schedulerConfig: Partial<SchedulerConfig> = {
 })
 export class AppComponent {
   schedulerConfig = schedulerConfig;
+  handleBeforeEventEditShow({ editor, eventRecord }: any) {
+    const noteField = editor.widgetMap.noteField;
+    noteField.hidden = eventRecord.name === 'Right click me';
+  }
   @ViewChild('scheduler') schedulerComponent!: BryntumSchedulerComponent;
 }
